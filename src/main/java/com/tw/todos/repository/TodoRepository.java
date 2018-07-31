@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public interface TodoRepository extends JpaRepository<Todo, Integer> {
@@ -15,4 +16,5 @@ public interface TodoRepository extends JpaRepository<Todo, Integer> {
 	@Transactional
 	@Query(value = "update Todo set textValue = :text where id = :id")
 	public Integer updateText(int id, String text);
+
 }
