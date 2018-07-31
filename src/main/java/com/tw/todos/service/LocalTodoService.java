@@ -1,6 +1,8 @@
 package com.tw.todos.service;
 
 import com.tw.todos.model.Todo;
+import com.tw.todos.repository.TodoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,6 +17,9 @@ public class LocalTodoService implements TodoService {
 
     private static List<Todo> todos = new ArrayList<>();
 
+    @Autowired
+    private TodoRepository todoRepository;
+
     @Override
     public Todo add(Todo todo) {
         todo.initId();
@@ -24,7 +29,7 @@ public class LocalTodoService implements TodoService {
 
     @Override
     public List<Todo> getTodos() {
-        return todos;
+        return (List<Todo>) todoRepository.findAll();
     }
 
     @Override
@@ -39,25 +44,7 @@ public class LocalTodoService implements TodoService {
 
     @Override
     public boolean update(Todo todo) {
-//        两种方法都可以
-//        Optional<Todo> todoOptional = todos.stream().filter(todo -> todo.getId() == id).findFirst();
-//        if (!todoOptional.isPresent()) {
-//            return false;
-//        }
-//        todoOptional.get().setText(viewTodo.getText());
-//        todoOptional.get().setCompleted(viewTodo.isCompleted());
-//        return true;
-        Todo todoToUpdate = null;
-        for (Todo todoItem : todos) {
-            if (todoItem.getId() == todo.getId()) {
-                todoToUpdate = todoItem;
-            }
-        }
-        if (todoToUpdate == null) {
-            return false;
-        }
-        todoToUpdate.setText(todo.getText());
-        todoToUpdate.setCompleted(todo.isCompleted());
+        todoRepository.updateText(todo.getId(), todo.getTextValue());
         return true;
     }
 }

@@ -45,7 +45,7 @@ public class LocalTodoServiceTest {
         assertThat(todoService.getTodos().size()).isEqualTo(1);
         assertThat(todoService.getTodos().get(0)).isEqualTo(todo);
         assertThat(todo.getId()).isGreaterThanOrEqualTo(0);
-        assertThat(todo.getText()).isEqualTo("todo text");
+        assertThat(todo.getTextValue()).isEqualTo("todo text");
         assertThat(todo.isCompleted()).isFalse();
     }
 
@@ -85,7 +85,7 @@ public class LocalTodoServiceTest {
         // then
         assertThat(updateSuccess).isTrue();
         assertThat(todoService.getTodos().size()).isEqualTo(1);
-        assertThat(todoService.getTodos().get(0).getText()).isEqualTo("new text");
+        assertThat(todoService.getTodos().get(0).getTextValue()).isEqualTo("new text");
         assertThat(todoService.getTodos().get(0).isCompleted()).isTrue();
     }
 
@@ -100,7 +100,7 @@ public class LocalTodoServiceTest {
         // then
         assertThat(updateSuccess).isFalse();
         assertThat(todoService.getTodos().size()).isEqualTo(1);
-        assertThat(todoService.getTodos().get(0).getText()).isNotEqualTo("new text");
+        assertThat(todoService.getTodos().get(0).getTextValue()).isNotEqualTo("new text");
         assertThat(todoService.getTodos().get(0).isCompleted()).isFalse();
     }
 

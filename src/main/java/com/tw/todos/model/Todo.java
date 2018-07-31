@@ -1,19 +1,33 @@
 package com.tw.todos.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * @author yangyi
  * @date 30/07/2018 4:30 PM
  */
+@Entity
+@Table(name = "todos")
 public class Todo {
     private static int idCount = 0;
 
+    @Id
+    @GeneratedValue
     private int id;
-    private String text;
+    @Column(name = "text")
+    private String textValue;
     private boolean completed;
 
-    public Todo(String text, boolean completed) {
-        this.text = text;
+    public Todo(String textValue, boolean completed) {
+        this.textValue = textValue;
         this.completed = completed;
+    }
+
+    public Todo() {
     }
 
     public int initId() {
@@ -29,12 +43,12 @@ public class Todo {
         this.id = id;
     }
 
-    public String getText() {
-        return text;
+    public String getTextValue() {
+        return textValue;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setTextValue(String textValue) {
+        this.textValue = textValue;
     }
 
     public boolean isCompleted() {
