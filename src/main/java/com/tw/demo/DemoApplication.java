@@ -1,12 +1,12 @@
-package com.tw.todos;
+package com.tw.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TodosApplication {
+public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TodosApplication.class, args);
+		SpringApplication.run(DemoApplication.class, args);
 	}
 }

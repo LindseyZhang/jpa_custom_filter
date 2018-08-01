@@ -1,10 +1,10 @@
-package com.tw.todos.repository;
+package com.tw.demo.repository;
 
-import com.tw.todos.model.Good;
+import com.tw.demo.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface GoodRepository extends JpaRepository<Good, Long>, GoodRepositoryCustom {
+public interface ProductRepository extends JpaRepository<Product, Long>, ProductRepositoryCustom {
 //	List<Good> findByPriceBetween(int minPrice, int maxPrice, Pageable pageable);
 }

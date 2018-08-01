@@ -6,6 +6,4 @@ spring:
   jpa:
     show-sql: true
     database: mysql
-  flyway:
-    schemas: public
 
