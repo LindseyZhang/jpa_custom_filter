@@ -34,7 +34,7 @@ public class TodoController {
 
     @PostMapping("/update")
     public boolean update(@RequestBody Todo todo) {
-        return localTodoService.update(todo);
+        return localTodoService. update(todo);
     }
 
     @DeleteMapping("/delete")

@@ -14,9 +14,9 @@ public class GoodService {
 	@Autowired
 	private GoodRepository goodRepository;
 
-
-	public List<Good> filterByPriceBetween(int minPrice, int maxPrice, int pageNum, int pageSize, String sortByPrice) {
-		final Sort orders = new Sort(sortByPrice.equals("ASC") ? Sort.Direction.ASC : Sort.Direction.DESC, "price");
-		return goodRepository.findByPriceBetween(minPrice, maxPrice, new PageRequest(pageNum, pageSize, orders));
+	public List<Good> finaAll(String name, int pageNum, int pageSize, String order) {
+		final Sort orders = new Sort(order.equals("ASC") ? Sort.Direction.ASC : Sort.Direction.DESC, "price");
+		final PageRequest page = PageRequest.of(pageNum, pageSize, orders);
+		return goodRepository.findAll(page).getContent();
 	}
 }
